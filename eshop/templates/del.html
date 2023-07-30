@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title%} Delete {% endblock %}
+
+
+{% block content%} 
+ 
+ <form action="" method="post" enctype="multipart/form-data">
+{% csrf_token%}
+
+<p>Are you sure delete {{val.name}} {{val.narxi}}$????</p>
+<input type="submit" class="btn-danger" value="delete">
+ </form>
+{% endblock %}

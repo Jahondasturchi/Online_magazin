@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title%} Home {% endblock %}
+
+
+{% block content%} 
+<div class="d-flex flex-wrap">
+    
+    {% for val in vals%}
+     {% if val.rasmi %}
+    <div class="p-2">
+        <form action="{% url 'add_cart' val.pk %}" method="post">{% csrf_token%}
+            <img src="{{val.rasmi.url }}" alt="" width="250", height="200">
+            <h5><i>{{val.ismi}} </i> {{val.price}}$</h5>
+            {% if user.is_authenticated %}
+            <label for="inputvalue">Sonini kiriting:</label>
+            <input type="number" name="inputvalue" value="1"  style="width: 60px;" >       
+            <input type="submit"  value="Savatga" /> 
+            {% elif user.is_superuser %}  
+            <label for="inputvalue">Sonini kiriting:</label>
+            <input type="number" name="inputvalue" value="1"  style="width: 60px;" >       
+            <input type="submit"  value="Savatga" />        
+            <a href="{% url 'edit' val.pk %}">edit</a>
+            <a href="{% url 'delete' val.pk %}">delete</a>
+            {% endif %}
+        </form>
+    </div>   
+    {% endif %}
+    {%endfor%}
+</div>     
+{% endblock %} 

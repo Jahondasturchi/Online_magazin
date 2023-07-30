@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title%} Savat {% endblock %}
+
+
+{% block content%} 
+
+
+<table class="table-info" style="width:100%; border: 1px solid black; border-collapse: collapse;">
+    <tr>
+      
+      <th scope="col" style="width:30%; border: 1px solid black; border-collapse: collapse;">Maxsulot nomi</th>
+      <th scope="col" style="width:30%; border: 1px solid black; border-collapse: collapse;">Maxsulot narxi</th>
+      <th scope="col" style="width:15%; border: 1px solid black; border-collapse: collapse;">Nechta olganingiz</th>
+      <th scope="col" style="width:10%; border: 1px solid black; border-collapse: collapse;">Delete</th>
+      
+    </tr>
+    {%for val in vals %}
+    <form action="" method="post">
+        {%csrf_token%}
+        <tr>
+   
+            <td style="width:30%; border: 1px solid black; border-collapse: collapse;">{{val.name.ismi}} </td>
+            <td style="width:30%; border: 1px solid black; border-collapse: collapse;"> {{val.narxi}}$</td>
+            <td style="width:30%; border: 1px solid black; border-collapse: collapse;">{{val.count}} ta</td>
+            <td style="width:30%; border: 1px solid black; border-collapse: collapse;"><a href="{%url 'itemdelete' val.pk %}">delete</a></td>
+        </tr>
+    {% endfor%}
+  </form>
+  </table>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title%} Delete {% endblock %}
+
+
+{% block content%} 
+ 
+ <form action="" method="post" enctype="multipart/form-data">
+{% csrf_token%}
+<img src="{{val.rasmi.url}}" alt="" width="300", height="300">
+<p>Are you sure delete {{val.ismi}} {{val.price}}$????</p>
+<input type="submit" class="btn-danger" value="delete">
+ </form>
+{% endblock %}
